@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_184143) do
+ActiveRecord::Schema.define(version: 2021_12_16_090204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "title"
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2021_12_15_184143) do
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "category_id", null: false
-    t.string "title"
+    t.string "title", null: false
     t.string "content"
-    t.boolean "completed"
-    t.boolean "urgent"
-    t.boolean "deleted"
+    t.boolean "completed", null: false
+    t.boolean "urgent", null: false
+    t.boolean "deleted", null: false
     t.string "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_184143) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
